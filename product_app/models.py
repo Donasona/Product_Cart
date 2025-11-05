@@ -8,4 +8,4 @@ class Productmodel(models.Model):
 
 class Cartmodel(models.Model):
     product=models.ForeignKey(Productmodel,on_delete=models.CASCADE)  
-    quality=models.IntegerField()  
+    quantity=models.IntegerField()  

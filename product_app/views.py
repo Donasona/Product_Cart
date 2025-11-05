@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.views.generic import View
 from product_app.models import Productmodel
 from product_app.forms import ProductForm
+from product_app.models import Cartmodel
 # from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -49,6 +50,13 @@ class Deleteproduct(View):
         id = kwargs.get("pk")
         product = Productmodel.objects.get(id=id)
         product.delete()
+        return render(request,"product_list.html")
+
+class Cartaddview(View):
+    def get(self,request,**kwargs):
+        id = kwargs.get("pk")
+        product = Productmodel.objects.get(id=id)
+        Cartmodel.objects.create(product=product,quantity =1)
         return render(request,"product_list.html")
 
        

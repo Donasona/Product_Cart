@@ -24,4 +24,5 @@ urlpatterns = [
     path('list/',Listproduct.as_view(),name="product_list"),
     path('update/<int:pk>',Updateproduct.as_view(),name="product_update"),
     path('delete/<int:pk>',Deleteproduct.as_view(),name="product_delete"),
+    path('cartadd/<int:pk>',Cartaddview.as_view(),name='cartadd')
 ]
