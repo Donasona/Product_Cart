@@ -22,8 +22,8 @@ class Createproduct(View):
         Productmodel.objects.create(name = name,price = price,stock = stock)
 
         form = ProductForm
-        
-        return render(request,"product_add.html",{"form":form})
+        return redirect("product_list")
+        # return render(request,"product_add.html",{"form":form})
 
 class Listproduct(View):
     def get(self,request):
@@ -43,6 +43,7 @@ class Updateproduct(View):
         form=ProductForm(request.POST,instance=product)
         if form.is_valid():
             form.save()
+            return redirect("product_list")
         return render(request,"product_update.html")
    
 class Deleteproduct(View):
@@ -50,7 +51,8 @@ class Deleteproduct(View):
         id = kwargs.get("pk")
         product = Productmodel.objects.get(id=id)
         product.delete()
-        return render(request,"product_list.html")
+        return redirect("product_list")
+        # return render(request,"product_list.html")
 
 class Cartaddview(View):
     def get(self,request,**kwargs):
