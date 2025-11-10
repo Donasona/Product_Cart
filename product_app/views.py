@@ -59,6 +59,7 @@ class Cartaddview(View):
         id = kwargs.get("pk")
         product = Productmodel.objects.get(id=id)
         Cartmodel.objects.create(product=product,quantity =1)
+        return render(request,"product_list.html")
        
 
     
