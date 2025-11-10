@@ -54,7 +54,6 @@ class Deleteproduct(View):
         return redirect("product_list")
         # return render(request,"product_list.html")
 
-class Cartaddview(View):
     def get(self,request,**kwargs):
         id = kwargs.get("pk")
         product = Productmodel.objects.get(id=id)
